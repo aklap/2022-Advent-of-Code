@@ -1,12 +1,12 @@
 require 'set'
 
 # Process the entire txt file to get count
-def count_overlap(lines, option={})
+def count_overlap(lines, options = {})
     lines.reduce(0) do |count, line|
         id_pair = sanitize(line)
         a = id_pair.first
         b = id_pair.last
-        count += ((is_overlapping(a, b, option)) ? 1 : 0)
+        count += ((is_overlapping(a, b, options)) ? 1 : 0)
     end
 end
 
@@ -21,7 +21,7 @@ end
 
 # Takes two arrays of ints and an option about which condition to check for,
 # returns boolean value
-def is_overlapping(a, b, options={})
+def is_overlapping(a, b, options = {})
     a_range = (a.first..a.last)
     b_range = (b.first..b.last)
     if options[:subset]
