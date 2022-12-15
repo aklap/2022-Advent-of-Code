@@ -13,10 +13,10 @@ end
 # Takes a line and removes punctuation. Returns an array of 2 arrays with 2 
 # ints in the inner arrays representing ranges, for ex: [[1, 2], [3, 4]]
 def sanitize(str)
-    return str.strip()
-                .gsub('-', ' ')
-                .split(',')
-                .map { |line| line.split(' ').map(&:to_i) }
+    str.strip()
+        .gsub('-', ' ')
+        .split(',')
+        .map { |line| line.split(' ').map(&:to_i) }
 end
 
 # Takes two arrays of ints and an option about which condition to check for,
