@@ -10,7 +10,8 @@ def count_overlap(lines, option={})
     end
 end
 
-# Takes a line and removes punctuation. Returns an array of 2 arrays with 2 \ ints in the inner arrays representing ranges, for ex: [[1, 2], [3, 4]]
+# Takes a line and removes punctuation. Returns an array of 2 arrays with 2 
+# ints in the inner arrays representing ranges, for ex: [[1, 2], [3, 4]]
 def sanitize(str)
     return str.strip()
                 .gsub('-', ' ')
@@ -18,7 +19,8 @@ def sanitize(str)
                 .map { |line| line.split(' ').map(&:to_i) }
 end
 
-# Takes two arrays of ints and an option about which condition to check for, \ returns boolean value
+# Takes two arrays of ints and an option about which condition to check for,
+# returns boolean value
 def is_overlapping(a, b, options={})
     a_range = (a.first..a.last)
     b_range = (b.first..b.last)
