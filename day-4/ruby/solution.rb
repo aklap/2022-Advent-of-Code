@@ -24,10 +24,10 @@ end
 def is_overlapping(a, b, options={})
     a_range = (a.first..a.last)
     b_range = (b.first..b.last)
-    if options[:contain]
+    if options[:subset]
         return a_range.cover?(b_range) || b_range.cover?(a_range)
     end
-    if options[:overlap]
+    if options[:intersect]
         return (a_range.to_set & b_range.to_set).any?
     end
 end
@@ -38,5 +38,5 @@ def display(count)
 end
 
 lines = File.open('../inputs/input.txt').readlines(chomp:true)
-display(count_overlap(lines, contain: true))
-display(count_overlap(lines, overlap: true))
+display(count_overlap(lines, subset: true))
+display(count_overlap(lines, intersect: true))
