@@ -1,20 +1,17 @@
-lines  = File.read('../inputs/input.txt').split("\n\n")
+lines  = File.read('../inputs/test.txt').split("\n\n")
 # Create instructions
 def get_instructions(lines)
     instructions = lines[1].split("\n").map { |instruct| instruct.scan(/\d+/).map(&:to_i) }
 end
 # Create rows
 def get_rows(lines)
-    rows = lines[0].split("\n")[0..-2].map{ |row| row.gsub(/[\[\]]/, ' ') }
+    rows = lines[0].split("\n")[0..-2].map{ |row| row.chars }
+        # gsub(/[\[\]]/, ' ') }
 end
 # Create stacks, transpose rows
 def transpose(rows)
-    n_chars = 0..rows.first.size
-    n_chars.step(4).map do |start|
-        rows.reduce([]) do |stacks, row|
-            stack = row[start..start+3].gsub(' ', '')
-            stack.scan(/[A-Z]/).any? ? stacks << stack : stacks
-        end 
+    rows.transpose.reduce([]) do |cols, col| 
+        col.grep(/[A-Z]/).any? ?  cols << col.grep(/[A-Z]/) : cols
     end
 end
 # move one crate
@@ -53,6 +50,7 @@ end
 
 rows = get_rows(lines)
 stacks = transpose(rows) 
+p stacks
 instructions = get_instructions(lines)
 # test one
 moved = move_crates(stacks, instructions, one: true)
