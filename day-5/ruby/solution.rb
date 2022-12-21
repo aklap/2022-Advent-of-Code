@@ -4,7 +4,7 @@ def get_instructions(lines)
 end
 
 def get_rows(lines)
-    rows = lines[0].split("\n")[0..-2].map{ |row| row.chars }
+    rows = lines[0].split("\n")[0..-2].map(&:chars)
 end
 
 def transpose(rows)
