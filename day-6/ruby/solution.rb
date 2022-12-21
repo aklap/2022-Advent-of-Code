@@ -10,5 +10,5 @@ def get_marker_index(lines, packet_size)
     end
 end
 
-puts "Markers ending at the following indices for packet size 4: #{get_marker_index(lines, 4).join(', ')}"
-puts "Markers ending at the following indices for packet size 14: #{get_marker_index(lines, 14).join(', ')}"
+puts "Markers ending at the following indices for packet size 4: #{get_marker_index(lines, 4).join(', ')}."
+puts "Markers ending at the following indices for packet size 14: #{get_marker_index(lines, 14).join(', ')}."
