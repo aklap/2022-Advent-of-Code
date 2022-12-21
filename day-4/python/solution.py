@@ -6,8 +6,6 @@ def is_overlapping(line, option=None):
             return a.issubset(b) or b.issubset(a)
     elif option =='intersecting':
             return not a.isdisjoint(b)
-    else:
-        return None
 
 
 def get_count(lines, option=None):
