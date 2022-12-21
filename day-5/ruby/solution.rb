@@ -1,6 +1,6 @@
 lines  = File.read('../inputs/test.txt').split("\n\n")
 def get_instructions(lines)
-    instructions = lines[1].split("\n").map { |instruct| instruct.scan(/\d+/).map(&:to_i) }
+    instructions = lines[1].split("\n").map { |instruction| instruction.scan(/\d+/).map(&:to_i) }
 end
 
 def get_rows(lines)
