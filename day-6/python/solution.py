@@ -3,12 +3,12 @@ signals = [line for line in lines]
 
 
 def find_marker_end(signals, size):
-    MARKER_SIZE = size
+    marker_size = size
     indices = []
     for signal in signals:
         for i in range(0, len(signal)):
-            if len(set(signal[i:i + MARKER_SIZE])) == MARKER_SIZE:
-                indices.append(i + MARKER_SIZE)
+            if len(set(signal[i:i + marker_size])) == marker_size:
+                indices.append(i + marker_size)
                 break
     return indices
 
