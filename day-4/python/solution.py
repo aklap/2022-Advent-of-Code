@@ -1,23 +1,26 @@
-def is_overlapping(line, option=None):
-    [a_start, a_end], [b_start, b_end] = line
-    a = set(range(int(a_start), int(a_end)+1))
-    b = set(range(int(b_start), int(b_end)+1))
-    if option == 'contained':
-            return a.issubset(b) or b.issubset(a)
-    elif option =='intersecting':
-            return not a.isdisjoint(b)
+def is_subset(a, b):
+    return a.issubset(b) or b.issubset(a)
 
 
-def get_count(lines, option=None):
-    count = 0
-    for line in lines:
-        count += int(is_overlapping(line, option))
-    return count
+def is_intersection(a, b):
+    return not a.isdisjoint(b)
+
+
+def get_count(pairs):
+    subset_count = 0
+    intersect_count = 0
+    for pair in pairs:
+        [a_start, a_end], [b_start, b_end] = pair
+        a = set(range(int(a_start), int(a_end) + 1))
+        b = set(range(int(b_start), int(b_end) + 1))
+        subset_count += (1 if is_subset(a, b) else 0)
+        intersect_count += (1 if is_intersection(a, b) else 0)
+    return (subset_count, intersect_count)
 
 
 with open('../inputs/input.txt', 'r') as f:
-    lines = [[pair.split('-') for pair in line.strip().split(',')] for line in f.readlines()]
-    total = get_count(lines, 'contained')
-    print("The number of sections that were a subset of another was {}".format(total))
-    total = get_count(lines, 'intersecting')
-    print("The number of sections that intersected was {}".format(total))
+    sections = f.read().splitlines()
+    pairs = [[pair.split('-') for pair in pair.split(',')] for pair in sections]
+    subset_count, intersect_count = get_count(pairs)
+    print("Number of sections with subsets: {}".format(subset_count))
+    print("Number of subsets with intersections: {}".format(intersect_count))
