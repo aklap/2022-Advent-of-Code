@@ -17,10 +17,10 @@ def get_sum(rucksacks):
     return sum
 
 
-def get_group_sum(rucksacks, size):
+def get_group_sum(rucksacks, group_size):
     sum = 0
-    for i in range(0, len(rucksacks), size):
-        group_rucksacks = [set(rucksacks[i]) for i in range(i, i+size)]
+    for i in range(0, len(rucksacks), group_size):
+        group_rucksacks = [set(rucksacks[i]) for i in range(i, i + group_size)]
         badge_set = group_rucksacks[0]
         for item_set in group_rucksacks[1:]:
             badge_set = badge_set.intersection(item_set)
@@ -32,7 +32,7 @@ def display(sum):
     print("Priorities sum is {:,}.".format(sum))
 
 
-with open('../inputs/test.txt', 'r') as f:
-    lines = f.read().splitlines()
-    display(get_sum(lines))
-    display(get_group_sum(lines, 3))
+with open('../inputs/input.txt', 'r') as f:
+    rucksacks = f.read().splitlines()
+    display(get_sum(rucksacks))
+    display(get_group_sum(rucksacks, 3))
