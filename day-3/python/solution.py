@@ -6,7 +6,7 @@ def get_priority_score(item):
     return PRIORITIES_SCORE[item]
 
 
-def get_sum(rucksacks):
+def get_priority_sum(rucksacks):
     sum = 0
     for rucksack in rucksacks:
         midpt = int(len(rucksack) / 2)
@@ -34,5 +34,5 @@ def display(sum):
 
 with open('../inputs/input.txt', 'r') as f:
     rucksacks = f.read().splitlines()
-    display(get_sum(rucksacks))
-    display(get_group_sum(rucksacks, 3))
+    display(get_priority_sum(rucksacks))
+    display(get_group_priority_sum(rucksacks, 3))
