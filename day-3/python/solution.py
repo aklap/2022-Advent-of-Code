@@ -2,8 +2,7 @@ import string
 
 
 def get_priority_score(item):
-    PRIORITIES_SCORE = dict(zip(string.ascii_lowercase \
-                + string.ascii_uppercase, list(range(1, 53))))
+    PRIORITIES_SCORE = dict(zip(string.ascii_letters, list(range(1, 53))))
     return PRIORITIES_SCORE[item]
 
 
